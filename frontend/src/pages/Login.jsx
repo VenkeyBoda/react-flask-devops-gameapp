@@ -31,8 +31,11 @@ export default function Login(){
           Sign In →
         </button>
 
-        <div className="link" onClick={()=>nav("/register")}>
-          Create Account
+        <div className="link">
+          Don't have an account?{" "}
+          <span className="link-highlight" onClick={() => nav("/register")}>
+            Create one
+          </span>
         </div>
       </div>
     </div>
