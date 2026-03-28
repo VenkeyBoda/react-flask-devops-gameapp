@@ -17,7 +17,7 @@ export default function Login(){
 
   return (
     <div className="card center">
-      <h1>🎮 GameApp</h1>
+      <h2>Login</h2>
       <input placeholder="Username" onChange={e=>setForm({...form,username:e.target.value})}/>
       <input type="password" placeholder="Password" onChange={e=>setForm({...form,password:e.target.value})}/>
       <button onClick={submit}>Login</button>
