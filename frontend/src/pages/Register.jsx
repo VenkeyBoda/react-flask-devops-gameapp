@@ -16,14 +16,36 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your submit logic here (API call, validation, etc.)
-    console.log(formData);
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("Registered successfully");
+        nav("/login");
+      } else {
+        alert(data.error || "Registration failed");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Server error");
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      {/* Only the card takes width, not full screen */}
       <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Create Account</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -73,7 +95,7 @@ const Register = () => {
           <input
             type="password"
             name="confirmPassword"
-            placeholder="Confirm Password *"
+            placeholder="Retype Password *"
             value={formData.confirmPassword}
             onChange={handleChange}
             required
@@ -91,12 +113,6 @@ const Register = () => {
           onClick={() => nav("/login")}
         >
           Already have an account? Sign in
-        </div>
-        <div
-          className="text-center mt-2 text-gray-500 cursor-pointer hover:underline"
-          onClick={() => nav("/register")}
-        >
-          Don't have an account? Create one
         </div>
       </div>
     </div>
