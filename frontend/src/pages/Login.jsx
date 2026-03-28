@@ -8,20 +8,33 @@ export default function Login(){
 
   const submit = async ()=>{
     try{
-      await api.post("/login",form);
+      const res = await api.post("/login", form);
+      localStorage.setItem("token", res.data.token);
       nav("/dashboard");
     }catch{
-      alert("Invalid login");
+      alert("Invalid credentials");
     }
   };
 
   return (
-    <div className="card center">
-      <h2>Login</h2>
-      <input placeholder="Username" onChange={e=>setForm({...form,username:e.target.value})}/>
-      <input type="password" placeholder="Password" onChange={e=>setForm({...form,password:e.target.value})}/>
-      <button onClick={submit}>Login</button>
-      <p onClick={()=>nav("/register")}>Create Account</p>
+    <div className="container">
+      <div className="card">
+        <div className="title">🎮 GameApp</div>
+        <div className="subtitle">Sign in to continue</div>
+
+        <input placeholder="Username"
+          onChange={e=>setForm({...form,username:e.target.value})}/>
+        <input type="password" placeholder="Password"
+          onChange={e=>setForm({...form,password:e.target.value})}/>
+
+        <button className="btn" onClick={submit}>
+          Sign In →
+        </button>
+
+        <div className="link" onClick={()=>nav("/register")}>
+          Create Account
+        </div>
+      </div>
     </div>
   );
 }

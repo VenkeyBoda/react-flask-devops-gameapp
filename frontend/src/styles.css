@@ -1,30 +1,137 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: Arial;
-    background: #1e2a78;
-    color: white;
-  }
-  
-  .card {
-    background: white;
-    color: black;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-  }
-  
-  .center {
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
-  }
-  
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 10px;
-  }
-  
-  button {
-    padding: 10px;
-  }
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #1c2674, #2e3fa3);
+  color: #111;
+}
+
+/* Center layout */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Card */
+.card {
+  width: 360px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+/* Title */
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #2e3fa3;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #1c2674;
+  transform: translateY(-1px);
+}
+
+/* Link */
+.link {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+}
+
+/* Dashboard */
+.dashboard {
+  padding: 30px;
+  color: white;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* Welcome card */
+.welcome {
+  background: white;
+  color: black;
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Feature card */
+.feature {
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transition: 0.2s;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+/* Calculator buttons */
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.calc-grid button {
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #eee;
+  cursor: pointer;
+  font-size: 16px;
+}

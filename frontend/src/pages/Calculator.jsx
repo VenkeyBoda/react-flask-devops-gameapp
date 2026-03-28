@@ -4,19 +4,24 @@ export default function Calculator(){
   const [val,setVal]=useState("");
 
   return (
-    <div className="card center">
-      <input value={val} readOnly />
+    <div className="container">
+      <div className="card">
+        <div className="title">Calculator</div>
 
-      <div className="grid">
-        {"123+456-789*0=/".split("").map(b=>(
-          <button key={b} onClick={()=>{
-            if(b==="="){
-              setVal(Function("return "+val)());
-            } else {
-              setVal(val+b);
-            }
-          }}>{b}</button>
-        ))}
+        <input value={val} readOnly />
+
+        <div className="calc-grid">
+          {"789/456*123-0.=+".split("").map(b=>(
+            <button key={b} onClick={()=>{
+              if(b==="="){
+                try{ setVal(Function("return "+val)()); }
+                catch{ setVal("Error"); }
+              } else {
+                setVal(val+b);
+              }
+            }}>{b}</button>
+          ))}
+        </div>
       </div>
     </div>
   );
